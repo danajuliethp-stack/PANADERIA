@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Formulario proveedor</title>
+
+    <link rel="stylesheet" href="formulario-provee.css" />
+  </head>
+
+  <body>
+    <!-- CONTENIDO DE EJEMPLO DE LA PÁGINA -->
+    <main class="pagina">
+      <h1>Proveedores</h1>
+
+      <p>Administra los proveedores de tu negocio.</p>
+
+      <button id="botonAbrirModal" class="boton-agregar">
+        + Agregar proveedor
+      </button>
+    </main>
+
+    <!--  MODAL DEL PROVEEDOR-->
+
+    <div id="modalProveedor" class="fondo-modal">
+      <div class="modal">
+        <!-- ENCABEZADO -->
+        <div class="encabezado-modal">
+          <div>
+            <h2>Agregar nuevo proveedor</h2>
+
+            <p>Registra la información del proveedor.</p>
+          </div>
+
+          <button
+            type="button"
+            id="botonCerrar"
+            class="boton-cerrar"
+            aria-label="Cerrar"
+          >
+            ×
+          </button>
+        </div>
+
+        <!-- FORMULARIO -->
+        <form id="formularioProveedor" novalidate>
+          <div class="contenido-modal">
+            <!-- FILA 1 -->
+            <div class="grupo-campo campo-completo">
+              <label for="nombreProveedor"> NOMBRE DEL PROVEEDOR * </label>
+
+              <input
+                type="text"
+                id="nombreProveedor"
+                name="nombreProveedor"
+                placeholder="Ej. Panadería La Estrella"
+                maxlength="80"
+              />
+
+              <small id="errorNombre" class="mensaje-error"></small>
+            </div>
+
+            <!-- FILA 2 -->
+            <div class="fila-campos">
+              <div class="grupo-campo">
+                <label for="nitProveedor"> NIT * </label>
+
+                <input
+                  type="text"
+                  id="nitProveedor"
+                  name="nitProveedor"
+                  placeholder="Ej. 900123456-7"
+                  maxlength="12"
+                />
+
+                <small id="errorNit" class="mensaje-error"></small>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="telefonoProveedor"> TELÉFONO * </label>
+
+                <input
+                  type="tel"
+                  id="telefonoProveedor"
+                  name="telefonoProveedor"
+                  placeholder="Ej. 3001234567"
+                  maxlength="10"
+                />
+
+                <small id="errorTelefono" class="mensaje-error"></small>
+              </div>
+            </div>
+
+            <!-- FILA 3 -->
+            <div class="fila-campos">
+              <div class="grupo-campo">
+                <label for="correoProveedor"> CORREO ELECTRÓNICO * </label>
+
+                <input
+                  type="email"
+                  id="correoProveedor"
+                  name="correoProveedor"
+                  placeholder="ejemplo@correo.com"
+                  maxlength="100"
+                />
+
+                <small id="errorCorreo" class="mensaje-error"></small>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="ciudadProveedor"> CIUDAD * </label>
+
+                <input
+                  type="text"
+                  id="ciudadProveedor"
+                  name="ciudadProveedor"
+                  placeholder="Ej. Sogamoso"
+                  maxlength="50"
+                />
+
+                <small id="errorCiudad" class="mensaje-error"></small>
+              </div>
+            </div>
+
+            <!-- DIRECCIÓN -->
+            <div class="grupo-campo campo-completo">
+              <label for="direccionProveedor"> DIRECCIÓN * </label>
+
+              <input
+                type="text"
+                id="direccionProveedor"
+                name="direccionProveedor"
+                placeholder="Ej. Calle 10 # 15-20"
+                maxlength="100"
+              />
+
+              <small id="errorDireccion" class="mensaje-error"></small>
+            </div>
+
+            <!-- PERSONA DE CONTACTO -->
+            <div class="grupo-campo campo-completo">
+              <label for="contactoProveedor"> PERSONA DE CONTACTO * </label>
+
+              <input
+                type="text"
+                id="contactoProveedor"
+                name="contactoProveedor"
+                placeholder="Ej. María Rodríguez"
+                maxlength="80"
+              />
+
+              <small id="errorContacto" class="mensaje-error"></small>
+            </div>
+
+            <!-- ESTADO -->
+            <div class="fila-campos">
+              <div class="grupo-campo">
+                <label for="estadoProveedor"> ESTADO INICIAL * </label>
+
+                <select id="estadoProveedor" name="estadoProveedor">
+                  <option value="">Seleccionar</option>
+
+                  <option value="activo">Activo</option>
+
+                  <option value="inactivo">Inactivo</option>
+                </select>
+
+                <small id="errorEstado" class="mensaje-error"></small>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="tipoProveedor"> TIPO DE PROVEEDOR * </label>
+
+                <select id="tipoProveedor" name="tipoProveedor">
+                  <option value="">Seleccionar</option>
+
+                  <option value="materia-prima">Materia prima</option>
+
+                  <option value="productos">Productos</option>
+
+                  <option value="servicios">Servicios</option>
+
+                  <option value="otro">Otro</option>
+                </select>
+
+                <small id="errorTipo" class="mensaje-error"></small>
+              </div>
+            </div>
+          </div>
+
+          <!-- PIE DEL MODAL -->
+          <div class="pie-modal">
+            <button type="button" id="botonCancelar" class="boton-cancelar">
+              Cancelar
+            </button>
+
+            <button type="submit" id="botonGuardar" class="boton-guardar">
+              Guardar proveedor
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="formulario-provee.js"></script>
+    <script src="../footer.js"></script>
+  </body>
+</html>

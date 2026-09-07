@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard-panaderia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+    />
+    <link rel="stylesheet" href="panel-admin.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="../tema.css" />
+  </head>
+  <body>
+    <aside class="barra-lateral">
+      <div class="logo">
+        <img src="../imagenes/Logo2.png" alt="La Milpa" class="logo-imagen" />
+      </div>
+
+      <nav class="menu-lateral">
+        <a href="dashboard.html" class="activo">
+          <span class="icono"><i class="fi fi-rr-dashboard"></i></span>
+          Inicio
+        </a>
+        <a href="pedidos.html">
+          <span class="icono"><i class="fi fi-rr-shopping-cart"></i></span>
+          Pedidos
+        </a>
+        <a href="menu.html">
+          <span class="icono"><i class="fi fi-rr-utensils"></i></span>
+          Menú
+        </a>
+        <a href="Usuario.html">
+          <span class="icono"><i class="fi fi-rr-users"></i></span>
+          Usuarios
+        </a>
+        <a href="configuracion.html">
+          <span class="icono"><i class="fi fi-rr-settings"></i></span>
+          Configuración
+        </a>
+      </nav>
+    </aside>
+
+    <main class="contenido">
+      <header class="barra-superior">
+        <div class="usuario">
+          <div class="avatar">U</div>
+          <div class="datos-usuario">
+            <strong>Administrador</strong>
+            <span><i class="fi fi-rr-angle-small-down"></i></span>            
+          </div>
+        </div>
+
+        <div class="acciones-superiores">
+          <div class="notificacion-wrap" aria-label="Notificaciones" role="button" tabindex="0">
+            <i class="fi fi-rr-bell"></i>
+            <span class="contador-notificacion" hidden>0</span>
+            <div class="menu-notificaciones" hidden></div>
+          </div>
+
+          <div class="buscador">
+            <span><i class="fi fi-rr-search"></i></span>
+            <input type="text" placeholder="Buscar..." />
+          </div>
+        </div>
+      </header>
+
+      <section class="estadisticas">
+        <article class="tarjeta-estadistica">
+          <div class="titulo-estadistica">
+            <span class="icon-box"><i class="fi fi-rr-shopping-cart"></i></span>
+            Pedidos hoy
+          </div>
+          <strong>0</strong>
+        </article>
+
+        <article class="tarjeta-estadistica">
+          <div class="titulo-estadistica">
+            <span class="icon-box"><i class="fi fi-rr-money"></i></span>
+            Ventas hoy
+          </div>
+          <strong>$0 COP</strong>
+        </article>
+
+        <article class="tarjeta-estadistica">
+          <div class="titulo-estadistica">
+            <span class="icon-box"><i class="fi fi-rr-users"></i></span>
+            Clientes nuevos
+          </div>
+          <strong>0</strong>
+        </article>
+      </section>
+
+      <section class="panel-lista">
+        <div class="subheader">
+          <h3>Productos más pedidos</h3>
+        </div>
+
+        <div class="lista-platillos">
+          <div class="platillo-row">
+            <div class="platillo-rank">01</div>
+            <div class="platillo-imagen"><i class="fi fi-rs-bread"></i></div>
+            <div class="platillo-info">
+              <div>
+                <div class="platillo-name">Pan de coco</div>
+                <div class="platillo-meta">0 pedidos</div>
+              </div>
+            </div>
+            <div class="platillo-count">0 pedidos</div>
+          </div>
+
+          <div class="platillo-row">
+            <div class="platillo-rank">02</div>
+            <div class="platillo-imagen"><i class="fi fi-rr-apple-pie"></i></div>
+            <div class="platillo-info">
+              <div>
+                <div class="platillo-name">Torta de chocolate</div>
+                <div class="platillo-meta">0 pedidos</div>
+              </div>
+            </div>
+            <div class="platillo-count">0 pedidos</div>
+          </div>
+            
+      </section>
+
+      <section class="panel-lista">
+        <div class="subheader">
+          <h3>Pedidos recientes</h3>
+          <a href=pedidos.html>
+            <button class="ver-todos">Ver todas</button>
+          </a>
+          
+        </div>
+
+        <div class="tabla-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>María González</td>
+                <td>18 May 2026</td>
+                <td>14:00</td>
+                <td>0</td>
+                <td><span class="estado confirmada">Confirmada</span></td>
+                <td class="more">⋮</td>
+              </tr>
+              <tr>
+                <td>Carlos Ramírez</td>
+                <td>18 May 2026</td>
+                <td>20:30</td>
+                <td>0</td>
+                <td><span class="estado pendiente">Pendiente</span></td>
+                <td class="more">⋮</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <div class="modal-confirmacion" id="modalConfirmarCancelacion" hidden>
+      <div class="modal-confirmacion__backdrop" data-cerrar-modal="true"></div>
+      <div class="modal-confirmacion__card" role="dialog" aria-modal="true" aria-labelledby="tituloConfirmarCancelacion">
+        <h3 id="tituloConfirmarCancelacion">Cancelar pedido</h3>
+        <p>¿Seguro que deseas cancelar este pedido?</p>
+        <div class="modal-confirmacion__acciones">
+          <button type="button" class="btn-secundario" data-cerrar-modal="true">Volver</button>
+          <button type="button" class="btn-danger" id="confirmarCancelacionBtn">Sí, cancelar</button>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-panel">
+          <p class="footer-panel__creditos">
+            <strong>Amapolas</strong> · Desarrollado por
+          </p>
+
+          <div class="footer-panel__equipo">
+            <div class="desarrolladora">
+              <span class="desarrolladora__nombre">DANA JULIETH PINEDA</span>
+              <span class="desarrolladora__rol">Desarrolladora Frontend</span>
+              <span class="desarrolladora__enlace">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                dana.pineda@gmail.com
+              </span>
+            </div>
+
+            <div class="desarrolladora">
+              <span class="desarrolladora__nombre">LIZETH TATIANA CORDERO</span>
+              <span class="desarrolladora__rol">Desarrolladora Backend</span>
+              <span class="desarrolladora__enlace">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                lizeth.cordero@gmail.com
+              </span>
+            </div>
+
+            <div class="desarrolladora">
+              <span class="desarrolladora__nombre">MAGDA LORENA ALVAREZ</span>
+              <span class="desarrolladora__rol"
+                >Programadora Base de datos</span
+              >
+              <span class="desarrolladora__enlace">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                magda.alvarez@gmail.com
+              </span>
+            </div>
+          </div>
+
+          <p class="footer-panel__copy">
+            © 2026 Amapola. Proyecto académico — todos los derechos reservados.
+          </p>
+        </footer>
+
+    <script src="dashboard.js"></script>
+    <script src="pedidos-dashboard.js"></script>
+    <script src="../footer.js"></script>
+    <script src="../tema.js"></script>
+  </body>
+</html>

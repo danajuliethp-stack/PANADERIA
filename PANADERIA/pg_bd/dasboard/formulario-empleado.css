@@ -1,0 +1,377 @@
+/* CONFIGURACIÓN GENERAL*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+
+  background-color: #f5f5f3;
+
+  color: #303744;
+}
+
+/* PÁGINA*/
+
+.pagina {
+  min-height: 100vh;
+
+  padding: 50px;
+}
+
+.pagina h1 {
+  font-size: 32px;
+
+  margin-bottom: 10px;
+}
+
+.pagina p {
+  color: #777;
+
+  margin-bottom: 30px;
+}
+
+/* BOTÓN AGREGAR */
+
+.boton-agregar {
+  background-color: #cda744;
+
+  border: none;
+
+  color: white;
+
+  padding: 13px 22px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  font-weight: bold;
+}
+
+.boton-agregar:hover {
+  background-color: #b99435;
+}
+
+/* FONDO DEL MODAL */
+
+.fondo-modal {
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background-color: rgba(20, 28, 40, 0.6);
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  z-index: 1000;
+
+  backdrop-filter: blur(3px);
+}
+
+/* MODAL */
+
+.modal {
+  width: 100%;
+
+  max-width: 680px;
+
+  max-height: 95vh;
+
+  background-color: white;
+
+  border-radius: 16px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+
+  animation: aparecerModal 0.25s ease;
+}
+
+/* ANIMACIÓN*/
+
+@keyframes aparecerModal {
+  from {
+    opacity: 0;
+
+    transform: translateY(-20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+/*ENCABEZADO */
+
+.encabezado-modal {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  padding: 25px 28px 20px;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+.encabezado-modal h2 {
+  font-size: 22px;
+
+  color: #303744;
+
+  margin-bottom: 6px;
+}
+
+.encabezado-modal p {
+  font-size: 13px;
+
+  color: #7d8490;
+}
+
+/* BOTÓN CERRAR*/
+
+.boton-cerrar {
+  border: none;
+
+  background: transparent;
+
+  color: #7d8490;
+
+  font-size: 27px;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.boton-cerrar:hover {
+  color: #303744;
+}
+
+/* CONTENIDO*/
+
+.contenido-modal {
+  padding: 22px 28px;
+
+  max-height: 65vh;
+
+  overflow-y: auto;
+}
+
+/*CAMPOS */
+
+.grupo-campo {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-bottom: 14px;
+
+  width: 100%;
+}
+
+.grupo-campo label {
+  font-size: 12px;
+
+  font-weight: bold;
+
+  color: #424957;
+
+  margin-bottom: 7px;
+
+  letter-spacing: 0.2px;
+}
+
+/*INPUTS Y SELECT*/
+
+.grupo-campo input,
+.grupo-campo select {
+  width: 100%;
+
+  height: 40px;
+
+  border: 1px solid #d9dde2;
+
+  border-radius: 8px;
+
+  padding: 0 12px;
+
+  font-size: 14px;
+
+  color: #444;
+
+  background-color: #faf9f7;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.grupo-campo input:focus,
+.grupo-campo select:focus {
+  border-color: #cda744;
+
+  background-color: white;
+
+  box-shadow: 0 0 0 3px rgba(205, 167, 68, 0.12);
+}
+
+/* PLACEHOLDER */
+
+.grupo-campo input::placeholder {
+  color: #999;
+}
+
+/* DOS COLUMNAS */
+
+.fila-campos {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+}
+
+/* MENSAJES*/
+
+.mensaje-error {
+  min-height: 15px;
+
+  margin-top: 4px;
+
+  color: #d9534f;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+/* CAMPO CON ERROR*/
+
+.campo-error input,
+.campo-error select {
+  border-color: #d9534f;
+
+  background-color: #fff8f8;
+}
+
+/* CAMPO CORRECTO */
+
+.campo-correcto input,
+.campo-correcto select {
+  border-color: #62a66a;
+}
+
+/*  PIE DEL MODAL */
+
+.pie-modal {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  padding: 16px 28px;
+
+  border-top: 1px solid #eeeeee;
+
+  background-color: white;
+}
+
+/* BOTONES */
+
+.boton-cancelar,
+.boton-guardar {
+  height: 40px;
+
+  padding: 0 20px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+/* CANCELAR */
+
+.boton-cancelar {
+  background-color: white;
+
+  color: #687080;
+
+  border: 1px solid #d5d9df;
+}
+
+.boton-cancelar:hover {
+  background-color: #f5f5f5;
+}
+
+/* GUARDAR */
+
+.boton-guardar {
+  background-color: #cda744;
+
+  color: white;
+
+  border: none;
+}
+
+.boton-guardar:hover {
+  background-color: #b99435;
+}
+
+/* RESPONSIVE*/
+
+@media (max-width: 650px) {
+  .modal {
+    max-height: 92vh;
+  }
+
+  .fila-campos {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  .encabezado-modal {
+    padding: 20px;
+  }
+
+  .contenido-modal {
+    padding: 20px;
+  }
+
+  .pie-modal {
+    padding: 15px 20px;
+  }
+
+  .boton-cancelar,
+  .boton-guardar {
+    flex: 1;
+  }
+}

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Formulario empleado</title>
+
+    <link rel="stylesheet" href="formulario-empleado.css" />
+  </head>
+
+  <body>
+    <!--PÁGINA PRINCIPAL-->
+
+    <main class="pagina">
+      <h1>Empleados</h1>
+
+      <p>Administra la información de los empleados.</p>
+
+      <button type="button" id="botonAbrirModal" class="boton-agregar">
+        + Agregar empleado
+      </button>
+    </main>
+
+    <!-- MODAL DEL EMPLEADO-->
+
+    <div id="modalEmpleado" class="fondo-modal">
+      <div class="modal">
+        <!-- ENCABEZADO-->
+
+        <div class="encabezado-modal">
+          <div>
+            <h2>Agregar nuevo empleado</h2>
+
+            <p>Registra la información del empleado.</p>
+          </div>
+
+          <button
+            type="button"
+            id="botonCerrar"
+            class="boton-cerrar"
+            aria-label="Cerrar"
+          >
+            ×
+          </button>
+        </div>
+
+        <!--FORMULARIO -->
+
+        <form id="formularioEmpleado" novalidate>
+          <div class="contenido-modal">
+            <!-- NOMBRE -->
+
+            <div class="grupo-campo">
+              <label for="nombreEmpleado"> NOMBRE COMPLETO * </label>
+
+              <input
+                type="text"
+                id="nombreEmpleado"
+                name="nombreEmpleado"
+                placeholder="Ej. María Rodríguez"
+                maxlength="80"
+              />
+
+              <small id="errorNombre" class="mensaje-error"> </small>
+            </div>
+
+            <!-- DOCUMENTO Y TELÉFONO -->
+
+            <div class="fila-campos">
+              <div class="grupo-campo">
+                <label for="documentoEmpleado"> DOCUMENTO * </label>
+
+                <input
+                  type="text"
+                  id="documentoEmpleado"
+                  name="documentoEmpleado"
+                  placeholder="Ej. 1001234567"
+                  maxlength="10"
+                />
+
+                <small id="errorDocumento" class="mensaje-error"> </small>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="telefonoEmpleado"> TELÉFONO * </label>
+
+                <input
+                  type="tel"
+                  id="telefonoEmpleado"
+                  name="telefonoEmpleado"
+                  placeholder="Ej. 3001234567"
+                  maxlength="10"
+                />
+
+                <small id="errorTelefono" class="mensaje-error"> </small>
+              </div>
+            </div>
+
+            <!-- CORREO Y CIUDAD -->
+
+            <div class="fila-campos">
+              <div class="grupo-campo">
+                <label for="correoEmpleado"> CORREO ELECTRÓNICO * </label>
+
+                <input
+                  type="email"
+                  id="correoEmpleado"
+                  name="correoEmpleado"
+                  placeholder="ejemplo@correo.com"
+                  maxlength="100"
+                />
+
+                <small id="errorCorreo" class="mensaje-error"> </small>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="ciudadEmpleado"> CIUDAD * </label>
+
+                <input
+                  type="text"
+                  id="ciudadEmpleado"
+                  name="ciudadEmpleado"
+                  placeholder="Ej. Sogamoso"
+                  maxlength="50"
+                />
+
+                <small id="errorCiudad" class="mensaje-error"> </small>
+              </div>
+            </div>
+
+            <!-- DIRECCIÓN -->
+
+            <div class="grupo-campo">
+              <label for="direccionEmpleado"> DIRECCIÓN * </label>
+
+              <input
+                type="text"
+                id="direccionEmpleado"
+                name="direccionEmpleado"
+                placeholder="Ej. Calle 10 # 15-20"
+                maxlength="100"
+              />
+
+              <small id="errorDireccion" class="mensaje-error"> </small>
+            </div>
+
+            <!-- CARGO Y CONTRATO -->
+
+            <div class="fila-campos">
+              <div class="grupo-campo">
+                <label for="cargoEmpleado"> CARGO * </label>
+
+                <select id="cargoEmpleado" name="cargoEmpleado">
+                  <option value="">Seleccionar</option>
+
+                  <option value="administrador">Administrador</option>
+
+                  <option value="panadero">Panadero</option>
+
+                  <option value="repostero">Repostero</option>
+
+                  <option value="cajero">Cajero</option>
+
+                  <option value="mesero">Mesero</option>
+
+                  <option value="domiciliario">Domiciliario</option>
+                </select>
+
+                <small id="errorCargo" class="mensaje-error"> </small>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="tipoContrato"> TIPO DE CONTRATO * </label>
+
+                <select id="tipoContrato" name="tipoContrato">
+                  <option value="">Seleccionar</option>
+
+                  <option value="termino-indefinido">Término indefinido</option>
+
+                  <option value="termino-fijo">Término fijo</option>
+
+                  <option value="prestacion-servicios">
+                    Prestación de servicios
+                  </option>
+                </select>
+
+                <small id="errorContrato" class="mensaje-error"> </small>
+              </div>
+            </div>
+
+            <!-- FECHA Y ESTADO -->
+
+            <div class="fila-campos">
+              <div class="grupo-campo">
+                <label for="fechaIngreso"> FECHA DE INGRESO * </label>
+
+                <input type="date" id="fechaIngreso" name="fechaIngreso" />
+
+                <small id="errorFecha" class="mensaje-error"> </small>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="estadoEmpleado"> ESTADO * </label>
+
+                <select id="estadoEmpleado" name="estadoEmpleado">
+                  <option value="">Seleccionar</option>
+
+                  <option value="activo">Activo</option>
+
+                  <option value="inactivo">Inactivo</option>
+                </select>
+
+                <small id="errorEstado" class="mensaje-error"> </small>
+              </div>
+            </div>
+
+            <!-- SALARIO -->
+
+            <div class="grupo-campo">
+              <label for="salarioEmpleado"> SALARIO * </label>
+
+              <input
+                type="number"
+                id="salarioEmpleado"
+                name="salarioEmpleado"
+                placeholder="Ej. 1500000"
+                min="1"
+                max="999999999"
+              />
+
+              <small id="errorSalario" class="mensaje-error"> </small>
+            </div>
+          </div>
+
+          <!-- =================================================
+                     PIE
+                ================================================== -->
+
+          <div class="pie-modal">
+            <button type="button" id="botonCancelar" class="boton-cancelar">
+              Cancelar
+            </button>
+
+            <button type="submit" id="botonGuardar" class="boton-guardar">
+              Guardar empleado
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="formulario-empleado.js"></script>
+    <script src="../footer.js"></script>
+  </body>
+</html>

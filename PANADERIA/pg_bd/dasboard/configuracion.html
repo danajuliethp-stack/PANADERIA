@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuración </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+    />
+    <link rel="stylesheet" href="configuracion.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="panel-admin.css" />
+    <link rel="stylesheet" href="../tema.css" />
+  </head>
+  <body>
+    <aside class="barra-lateral">
+      <div class="logo">
+        <img src="../imagenes/Logo2.png" alt="La Milpa" class="logo-imagen" />
+      </div>
+
+      <nav class="menu-lateral">
+        <a href="panel-admi.html">
+          <span class="icono"><i class="fi fi-rr-dashboard"></i></span>
+          Inicio
+        </a>
+        <a href="pedidos.html">
+          <span class="icono"><i class="fi fi-rr-shopping-cart"></i></span>
+          Pedidos
+        </a>
+        <a href="menu.html">
+          <span class="icono"><i class="fi fi-rr-utensils"></i></span>
+          Menú
+        </a>
+        <a href="Usuario.html">
+          <span class="icono"><i class="fi fi-rr-users"></i></span>
+          Clientes
+        </a>
+        <a href="configuracion.html" class="activo">
+          <span class="icono"><i class="fi fi-rr-settings"></i></span>
+          Configuración
+        </a>
+      </nav>
+    </aside>
+
+    <main class="contenido">
+      <header class="barra-superior">
+        <div class="usuario">
+          <div class="avatar">U</div>
+          <div class="datos-usuario">
+            <strong>Administrador</strong>
+            <span><i class="fi fi-rr-angle-small-down"></i></span>
+          </div>
+        </div>
+
+        <div class="acciones-superiores">
+          <div class="notificacion-wrap" aria-label="Notificaciones">
+            <i class="fi fi-rr-bell"></i>
+          </div>
+
+          <div class="buscador">
+            <span><i class="fi fi-rr-search"></i></span>
+            <input type="text" placeholder="Buscar..." />
+          </div>
+        </div>
+      </header>
+
+      <section class="panel-pagina">
+        <div class="encabezado-pagina">
+          <div>
+            <h1>Configuración</h1>
+            <p>Personaliza la operación y la información de tu panadería.</p>
+          </div>
+          <button
+            type="submit"
+            form="form-configuracion"
+            class="boton-principal"
+          >
+            Guardar cambios
+          </button>
+        </div>
+
+        <div class="tarjetas-resumen">
+          <div class="tarjeta-resumen">
+            <span>Perfil de la panadería</span>
+            <strong id="resumen-nombre">Amapolas</strong>
+          </div>
+          <div class="tarjeta-resumen">
+            <span>Notificaciones</span>
+            <strong id="resumen-email">Activas</strong>
+          </div>
+          <div class="tarjeta-resumen">
+            <span>Zona horaria</span>
+            <strong id="resumen-horario">Colombia</strong>
+          </div>
+        </div>
+
+        <form id="form-configuracion" class="formulario-configuracion">
+          <div class="fila-configuracion">
+            <label>
+              Nombre comercial
+              <input id="nombre-comercial" type="text" placeholder="Amapolas" />
+            </label>
+
+            <label>
+              Correo de notificaciones
+              <input
+                id="correo-notificaciones"
+                type="email"
+                placeholder="panaderiaypasteleria@amapolas.com"
+              />
+            </label>
+          </div>
+
+          <div class="fila-configuracion">
+            <label>
+              Horario general
+              <input
+                id="horario-general"
+                type="text"
+                placeholder="Lun - Dom: 6:00 am - 8:00 pm"
+              />
+            </label>
+
+            <label class="switch-config">
+              <span>Modo oscuro</span>
+              <input id="modo-oscuro-config" type="checkbox" />
+              <span class="slider" aria-hidden="true"></span>
+            </label>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div
+      class="modal-confirmacion"
+      id="modalConfirmarConfiguracion"
+      hidden
+      aria-hidden="true"
+    >
+      <div
+        class="modal-confirmacion__backdrop"
+        data-cerrar-modal-configuracion="true"
+      ></div>
+      <div
+        class="modal-confirmacion__card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloConfirmarConfiguracion"
+      >
+        <h3 id="tituloConfirmarConfiguracion">Confirmar cambios</h3>
+        <p>¿Deseas guardar los cambios de configuración?</p>
+        <div class="modal-confirmacion__acciones">
+          <button
+            type="button"
+            class="btn-secundario"
+            data-cerrar-modal-configuracion="true"
+          >
+            Cancelar
+          </button>
+          <button type="button" class="btn-danger" id="confirmarConfiguracionBtn">
+            Guardar cambios
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="../footer.js"></script>
+    <script src="../tema.js"></script>
+    <script>
+      const CONFIG_DEFAULT = {
+        nombreComercial: "Amapolas",
+        email: "panaderiaypasteleria@amapolas.com",
+        horario: "Lun - Dom: 6:00 am - 8:00 pm",
+        tema: "claro",
+      };
+
+      const leerConfig = () => {
+        try {
+          const guardada = JSON.parse(
+            localStorage.getItem("configuracionAmapolas") || "{}",
+          );
+          return { ...CONFIG_DEFAULT, ...guardada };
+        } catch {
+          return { ...CONFIG_DEFAULT };
+        }
+      };
+
+      const guardarConfig = (nuevaConfig) => {
+        const actual = leerConfig();
+        const final = { ...actual, ...nuevaConfig };
+        localStorage.setItem("configuracionAmapolas", JSON.stringify(final));
+        return final;
+      };
+
+      const aplicarTemaDesdeConfig = (tema) => {
+        const esOscuro = String(tema || "claro").toLowerCase() === "oscuro";
+        document.body.classList.toggle("tema-oscuro", esOscuro);
+        document.body.classList.toggle("dark-mode", esOscuro);
+        localStorage.setItem(
+          "dashboardThemeMode",
+          esOscuro ? "oscuro" : "claro",
+        );
+      };
+
+      const nombreComercial = document.getElementById("nombre-comercial");
+      const correoNotificaciones = document.getElementById(
+        "correo-notificaciones",
+      );
+      const horarioGeneral = document.getElementById("horario-general");
+      const checkboxTema = document.getElementById("modo-oscuro-config");
+      const modalConfirmarConfiguracion = document.getElementById(
+        "modalConfirmarConfiguracion",
+      );
+      const confirmarConfiguracionBtn = document.getElementById(
+        "confirmarConfiguracionBtn",
+      );
+
+      const actualizarTemaDesdeCheckbox = () => {
+        const tema = checkboxTema.checked ? "oscuro" : "claro";
+        const configActual = guardarConfig({
+          nombreComercial:
+            nombreComercial.value.trim() || CONFIG_DEFAULT.nombreComercial,
+          email: correoNotificaciones.value.trim() || CONFIG_DEFAULT.email,
+          horario: horarioGeneral.value.trim() || CONFIG_DEFAULT.horario,
+          tema,
+        });
+
+        aplicarTemaDesdeConfig(configActual.tema);
+        if (window.amapolasConfig && window.amapolasConfig.actualizar) {
+          window.amapolasConfig.actualizar();
+        }
+      };
+
+      const rellenarCampos = () => {
+        const config = leerConfig();
+        nombreComercial.value = config.nombreComercial;
+        correoNotificaciones.value = config.email;
+        horarioGeneral.value = config.horario;
+        checkboxTema.checked =
+          String(config.tema || "claro").toLowerCase() === "oscuro";
+
+        document.getElementById("resumen-nombre").textContent =
+          config.nombreComercial;
+        document.getElementById("resumen-email").textContent = config.email;
+        document.getElementById("resumen-horario").textContent = config.horario;
+
+        aplicarTemaDesdeConfig(config.tema);
+      };
+
+      checkboxTema.addEventListener("change", actualizarTemaDesdeCheckbox);
+
+      const guardarCambiosConfiguracion = () => {
+        const configActual = guardarConfig({
+          nombreComercial:
+            nombreComercial.value.trim() || CONFIG_DEFAULT.nombreComercial,
+          email: correoNotificaciones.value.trim() || CONFIG_DEFAULT.email,
+          horario: horarioGeneral.value.trim() || CONFIG_DEFAULT.horario,
+          tema: checkboxTema.checked ? "oscuro" : "claro",
+        });
+
+        aplicarTemaDesdeConfig(configActual.tema);
+        rellenarCampos();
+        cerrarModalConfiguracion();
+        if (window.amapolasConfig && window.amapolasConfig.actualizar) {
+          window.amapolasConfig.actualizar();
+        }
+      };
+
+      const abrirModalConfiguracion = () => {
+        modalConfirmarConfiguracion.hidden = false;
+        modalConfirmarConfiguracion.setAttribute("aria-hidden", "false");
+      };
+
+      function cerrarModalConfiguracion() {
+        modalConfirmarConfiguracion.hidden = true;
+        modalConfirmarConfiguracion.setAttribute("aria-hidden", "true");
+      }
+
+      confirmarConfiguracionBtn.addEventListener(
+        "click",
+        guardarCambiosConfiguracion,
+      );
+      modalConfirmarConfiguracion.addEventListener("click", (event) => {
+        if (event.target.closest("[data-cerrar-modal-configuracion]")) {
+          cerrarModalConfiguracion();
+        }
+      });
+
+      document
+        .getElementById("form-configuracion")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+          abrirModalConfiguracion();
+        });
+
+      rellenarCampos();
+    </script>
+  </body>
+</html>

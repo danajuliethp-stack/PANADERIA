@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedidos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+    />
+    <link rel="stylesheet" href="pedidos.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="panel-admin.css" />
+    <link rel="stylesheet" href="../tema.css" />
+  </head>
+  <body>
+    <aside class="barra-lateral">
+      <div class="logo">
+        <img src="../imagenes/Logo2.png" alt="La Milpa" class="logo-imagen" />
+      </div>
+
+      <nav class="menu-lateral">
+        <a href="panel-admi.html">
+          <span class="icono"><i class="fi fi-rr-dashboard"></i></span>
+          Inicio
+        </a>
+        <a href="pedidos.html" class="activo">
+          <span class="icono"><i class="fi fi-rr-shopping-cart"></i></span>
+          Pedidos
+        </a>
+        <a href="menu.html">
+          <span class="icono"><i class="fi fi-rr-utensils"></i></span>
+          Menú
+        </a>
+        <a href="Usuario.html">
+          <span class="icono"><i class="fi fi-rr-users"></i></span>
+          Usuarios
+        </a>
+        <a href="configuracion.html">
+          <span class="icono"><i class="fi fi-rr-settings"></i></span>
+          Configuración
+        </a>
+      </nav>
+    </aside>
+
+    <main class="contenido">
+      <header class="barra-superior">
+        <div class="usuario">
+          <div class="avatar">U</div>
+          <div class="datos-usuario">
+            <strong>Administrador</strong>
+            <span><i class="fi fi-rr-angle-small-down"></i></span>
+          </div>
+        </div>
+
+        <div class="acciones-superiores">
+          <div class="notificacion-wrap" aria-label="Notificaciones">
+            <i class="fi fi-rr-bell"></i>
+          </div>
+
+          <div class="buscador">
+            <span><i class="fi fi-rr-search"></i></span>
+            <input type="text" placeholder="Buscar..." />
+          </div>
+        </div>
+      </header>
+
+      <section class="panel-pagina">
+        <div class="encabezado-pagina">
+          <div>
+            <h1>Pedidos</h1>
+            <p>Gestión y seguimiento de pedidos.</p>
+          </div>
+        </div>
+
+        <div class="tarjetas-resumen">
+          <div class="tarjeta-resumen">
+            <span>Pedidos de hoy</span>
+            <strong id="resumen-pedidos-hoy">0</strong>
+          </div>
+          <div class="tarjeta-resumen">
+            <span>Pendientes</span>
+            <strong id="resumen-pendientes">0</strong>
+          </div>
+          <div class="tarjeta-resumen">
+            <span>Ventas del día</span>
+            <strong id="resumen-ventas-dia">$0 COP</strong>
+          </div>
+        </div>
+
+        <div class="filtros">
+          <select id="estadoFiltro" aria-label="Filtrar por estado">
+            <option value="todos">Todos los estados</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="recibido">Recibido</option>
+            <option value="cancelado">Cancelado</option>
+          </select>
+          <select id="sedeFiltro" aria-label="Filtrar por sede">
+            <option value="todas">Todas las sedes</option>
+            <option value="centro">Sede Centro</option>
+            <option value="olaya">Sede Olaya</option>
+            <option value="magdalena">Sede Magdalena</option>
+            <option value="domicilio">Domicilio</option>
+          </select>
+        </div>
+
+        <div class="tabla-contenedor">
+          <table>
+            <thead>
+              <tr>
+                <th>Pedido</th>
+                <th>Cliente</th>
+                <th>Sede</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#LM-1048</td>
+                <td>Ana Torres</td>
+                <td>2026-10-01</td>
+                <td>13:42</td>
+                <td>$0</td>
+                <td><span class="estado preparando">Preparando</span></td>
+                <td>
+                  <div class="acciones-estado">
+                    <button
+                      type="button"
+                      data-pedido-id="1048"
+                      data-estado="pendiente"
+                    >
+                      Pendiente
+                    </button>
+                    <button
+                      type="button"
+                      data-pedido-id="1048"
+                      data-estado="recibido"
+                    >
+                      Recibido
+                    </button>
+                    <button
+                      type="button"
+                      data-pedido-id="1048"
+                      data-estado="cancelado"
+                    >
+                      Cancelado
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>#LM-1047</td>
+                <td>Jorge Castillo</td>
+                <td>2026-04-11</td>
+                <td>13:35</td>
+                <td>$0</td>
+                <td><span class="estado lista">Listo</span></td>
+                <td>
+                  <div class="acciones-estado">
+                    <button
+                      type="button"
+                      data-pedido-id="1047"
+                      data-estado="pendiente"
+                    >
+                      Pendiente
+                    </button>
+                    <button
+                      type="button"
+                      data-pedido-id="1047"
+                      data-estado="recibido"
+                    >
+                      Recibido
+                    </button>
+                    <button
+                      type="button"
+                      data-pedido-id="1047"
+                      data-estado="cancelado"
+                    >
+                      Cancelado
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>#LM-1046</td>
+                <td>Sofía Luna</td>
+                <td>2026-08-10</td>
+                <td>13:28</td>
+                <td>$0</td>
+                <td><span class="estado confirmada">Entregado</span></td>
+                <td>
+                  <div class="acciones-estado">
+                    <button
+                      type="button"
+                      data-pedido-id="1046"
+                      data-estado="pendiente"
+                    >
+                      Pendiente
+                    </button>
+                    <button
+                      type="button"
+                      data-pedido-id="1046"
+                      data-estado="recibido"
+                    >
+                      Recibido
+                    </button>
+                    <button
+                      type="button"
+                      data-pedido-id="1046"
+                      data-estado="cancelado"
+                    >
+                      Cancelado
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <div class="modal-confirmacion" id="modalConfirmarCancelacion" hidden>
+      <div class="modal-confirmacion__backdrop" data-cerrar-modal="true"></div>
+      <div
+        class="modal-confirmacion__card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloConfirmarCancelacion"
+      >
+        <h3 id="tituloConfirmarCancelacion">Cancelar pedido</h3>
+        <p>¿Seguro que deseas cancelar este pedido?</p>
+        <div class="modal-confirmacion__acciones">
+          <button type="button" class="btn-secundario" data-cerrar-modal="true">
+            Volver
+          </button>
+          <button type="button" class="btn-danger" id="confirmarCancelacionBtn">
+            Sí, cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="pedidos-dashboard.js"></script>
+    <script src="../footer.js"></script>
+    <script src="../tema.js"></script>
+  </body>
+</html>

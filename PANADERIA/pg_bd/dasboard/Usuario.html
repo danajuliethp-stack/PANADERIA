@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+    />
+    <link rel="stylesheet" href="Usuario.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="panel-admin.css" />
+    <link rel="stylesheet" href="../tema.css" />
+  </head>
+  <body>
+    <aside class="barra-lateral">
+      <div class="logo">
+        <img src="../imagenes/Logo2.png" alt="La Milpa" class="logo-imagen" />
+      </div>
+
+      <nav class="menu-lateral">
+        <a href="panel-admi.html">
+          <span class="icono"><i class="fi fi-rr-dashboard"></i></span>
+          Inicio
+        </a>
+        <a href="pedidos.html">
+          <span class="icono"><i class="fi fi-rr-shopping-cart"></i></span>
+          Pedidos
+        </a>
+        <a href="menu.html">
+          <span class="icono"><i class="fi fi-rr-utensils"></i></span>
+          Menú
+        </a>
+        <a href="Usuario.html" class="activo">
+          <span class="icono"><i class="fi fi-rr-users"></i></span>
+          Usuarios
+        </a>
+        <a href="configuracion.html">
+          <span class="icono"><i class="fi fi-rr-settings"></i></span>
+          Configuración
+        </a>
+      </nav>
+    </aside>
+
+    <main class="contenido">
+      <header class="barra-superior">
+        <div class="usuario">
+          <div class="avatar">U</div>
+          <div class="datos-usuario">
+            <strong>Administrador</strong>
+            <span><i class="fi fi-rr-angle-small-down"></i></span>
+          </div>
+        </div>
+
+        <div class="acciones-superiores">
+          <div class="notificacion-wrap" aria-label="Notificaciones">
+            <i class="fi fi-rr-bell"></i>
+          </div>
+
+          <div class="buscador">
+            <span><i class="fi fi-rr-search"></i></span>
+            <input type="text" placeholder="Buscar..." />
+          </div>
+        </div>
+      </header>
+
+      <section class="panel-pagina">
+        <div class="encabezado-pagina">
+          <div>
+            <h1>Usuario</h1>
+            <p>Conoce y administra la comunidad que visita.</p>
+          </div>
+        </div>
+
+        <div class="filtros">
+          <select id="filtroTipo" aria-label="Filtrar por tipo de usuario">
+            <option value="">Todos los usuarios</option>
+            <option value="cliente">Clientes</option>
+            <option value="empleado">Empleados</option>
+            <option value="proveedor">Proveedores</option>
+          </select>
+          <button
+            type="button"
+            class="btn-registrar-usuario"
+            id="btn-abrir-registro-usuario"
+          >
+            Registrar
+          </button>
+        </div>
+
+        <div class="tabla-contenedor">
+          <table>
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Tipo</th>
+                <th>Contacto</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="modal-editar-usuario"
+      class="modal-usuario hidden"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-usuario__contenido"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-editar-usuario"
+      >
+        <button
+          type="button"
+          class="modal-usuario__cerrar"
+          data-cerrar-modal="true"
+          aria-label="Cerrar formulario"
+        >
+          ×
+        </button>
+        <h3 id="titulo-editar-usuario">Editar usuario</h3>
+        <form id="form-editar-usuario" class="formulario-usuario">
+          <input type="hidden" id="usuario-id-editar" />
+          <div class="campo-usuario">
+            <label for="usuario-nombre">Nombre</label>
+            <input id="usuario-nombre" name="nombre" type="text" required />
+          </div>
+          <div class="campo-usuario">
+            <label for="usuario-correo">Correo</label>
+            <input id="usuario-correo" name="correo" type="email" required />
+          </div>
+          <div class="campo-usuario">
+            <label for="usuario-telefono">Teléfono</label>
+            <input id="usuario-telefono" name="telefono" type="tel" />
+          </div>
+          <div class="campo-usuario doble">
+            <div>
+              <label for="usuario-rol">Rol</label>
+              <select id="usuario-rol" name="rol">
+                <option value="cliente">Cliente</option>
+                <option value="empleado">Empleado</option>
+                <option value="proveedor">Proveedor</option>
+                <option value="administrador">Administrador</option>
+              </select>
+            </div>
+            <div>
+              <label for="usuario-estado">Estado</label>
+              <select id="usuario-estado" name="estado">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>
+            </div>
+          </div>
+          <div class="acciones-modal">
+            <button
+              type="button"
+              class="btn-secundario"
+              data-cerrar-modal="true"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="btn-rol btn-guardar-usuario">
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div
+      id="modal-registrar-usuario"
+      class="modal-usuario hidden"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-usuario__contenido modal-usuario__contenido--wide"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-registrar-usuario"
+      >
+        <button
+          type="button"
+          class="modal-usuario__cerrar"
+          data-cerrar-modal-registro="true"
+          aria-label="Cerrar formulario"
+        >
+          ×
+        </button>
+        <h3 id="titulo-registrar-usuario">Registrar usuario</h3>
+        <form
+          id="form-registrar-usuario"
+          class="formulario-usuario formulario-usuario--registro"
+        >
+          <div class="campo-usuario">
+            <label for="registro-rol">Rol</label>
+            <select id="registro-rol" name="rol">
+              <option value="cliente">Cliente</option>
+              <option value="empleado">Empleado</option>
+              <option value="proveedor">Proveedor</option>
+              <option value="administrador">Administrador</option>
+            </select>
+          </div>
+
+          <div class="campo-usuario registro-base">
+            <label for="registro-nombre">Nombre completo</label>
+            <input id="registro-nombre" name="nombre" type="text" required />
+          </div>
+
+          <div class="campo-usuario registro-base registro-telefono">
+            <label for="registro-telefono">Teléfono</label>
+            <input id="registro-telefono" name="telefono" type="tel" required />
+          </div>
+
+          <div class="registro-role-section" data-role-section="cliente">
+            <div class="campo-usuario doble">
+              <div>
+                <label for="registro-tipo-documento">Tipo de documento</label>
+                <select id="registro-tipo-documento" name="tipoDocumento">
+                  <option value="cc">C.C</option>
+                  <option value="ce">C.E</option>
+                  <option value="nit">NIT</option>
+                  <option value="pasaporte">Pasaporte</option>
+                </select>
+              </div>
+              <div>
+                <label for="registro-documento">Documento</label>
+                <input id="registro-documento" name="documento" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="registro-role-section hidden"
+            data-role-section="empleado"
+          >
+            <div class="campo-usuario doble">
+              <div>
+                <label for="registro-tipo-documento-empleado"
+                  >Tipo de documento</label
+                >
+                <select
+                  id="registro-tipo-documento-empleado"
+                  name="tipoDocumentoEmpleado"
+                >
+                  <option value="cc">C.C</option>
+                  <option value="ce">C.E</option>
+                  <option value="nit">NIT</option>
+                  <option value="pasaporte">Pasaporte</option>
+                </select>
+              </div>
+              <div>
+                <label for="registro-doc-empleado">Documento</label>
+                <input id="registro-doc-empleado" type="text" />
+              </div>
+            </div>
+            <div class="campo-usuario doble">
+              <div>
+                <label for="registro-ciudad-empleado">Ciudad</label>
+                <input id="registro-ciudad-empleado" type="text" />
+              </div>
+              <div>
+                <label for="registro-direccion-empleado">Dirección</label>
+                <input id="registro-direccion-empleado" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="registro-role-section hidden"
+            data-role-section="proveedor"
+          >
+            <div class="campo-usuario doble">
+              <div>
+                <label for="registro-nit-proveedor">NIT</label>
+                <input id="registro-nit-proveedor" type="text" />
+              </div>
+              <div>
+                <label for="registro-ciudad-proveedor">Ciudad</label>
+                <input id="registro-ciudad-proveedor" type="text" />
+              </div>
+            </div>
+            <div class="campo-usuario doble">
+              <div>
+                <label for="registro-contacto-proveedor"
+                  >Persona de contacto</label
+                >
+                <input id="registro-contacto-proveedor" type="text" />
+              </div>
+              <div>
+                <label for="registro-direccion-proveedor">Dirección</label>
+                <input id="registro-direccion-proveedor" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="campo-usuario registro-base registro-credentials">
+            <label for="registro-correo">Correo</label>
+            <input id="registro-correo" name="correo" type="email" />
+          </div>
+
+          <div
+            class="campo-usuario registro-base registro-passwords registro-credentials"
+          >
+            <div>
+              <label for="registro-contrasena">Contraseña</label>
+              <input
+                id="registro-contrasena"
+                name="contrasena"
+                type="password"
+                minlength="6"
+              />
+            </div>
+            <div>
+              <label for="registro-confirmar">Confirmar contraseña</label>
+              <input
+                id="registro-confirmar"
+                name="confirmar"
+                type="password"
+                minlength="6"
+              />
+            </div>
+          </div>
+
+          <div class="acciones-modal">
+            <button
+              type="button"
+              class="btn-secundario"
+              data-cerrar-modal-registro="true"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="btn-rol btn-guardar-usuario">
+              Registrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="Usuario.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="../footer.js"></script>
+    <script src="../tema.js"></script>
+  </body>
+</html>
